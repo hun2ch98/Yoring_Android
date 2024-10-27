@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f9f9f9"
+    tools:context=".ChoosePlan">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar4"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#00FFFFFF">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:text="현재 사용 중인 요금제"
+            android:fontFamily="@font/nanumsbold_e">
+        </TextView>
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:id="@+id/view_top4"
+        android:layout_marginBottom="10dp"/>
+
+    <LinearLayout
+        android:layout_below="@+id/toolbar4"
+        android:background="@color/material_dynamic_primary100"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        android:id="@+id/linear4_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--통신사 스피너 레이아웃-->
+        <RelativeLayout
+            android:id="@+id/relative4_1"
+            android:visibility="gone"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:fontFamily="@font/nanumsbold_e"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3사 통신사"
+                android:id="@+id/tv4_1"/>
+
+            <Spinner
+                android:fontFamily="@font/nanumsbold_e"
+                android:layout_below="@+id/tv4_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/spn_main"/>
+
+        </RelativeLayout>
+
+        <!--통신사 스피너 레이아웃-->
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/relative4_2"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:fontFamily="@font/nanumsbold_e"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="알뜰폰 통신사"
+                android:id="@+id/tv4_2" />
+
+            <Spinner
+                android:fontFamily="@font/nanumsbold_e"
+                android:layout_below="@+id/tv4_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/spn_extra"/>
+
+        </RelativeLayout>
+
+        <!--요금제 가격 버튼 레이아웃-->
+        <RelativeLayout
+            android:id="@+id/relative4_3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/linear4_1"
+            android:visibility="gone">
+
+            <TextView
+                android:fontFamily="@font/nanumsbold_e"
+                android:gravity="center"
+                android:id="@+id/tv_price_range"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="사용 중인 요금제의 대략적인 가격을 설정해주세요"
+                android:layout_centerHorizontal="true"
+                android:textSize="18dp"/>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_price_range"
+                android:columnCount="2"
+                android:rowCount="2"
+                android:id="@+id/grid_layout_radio_buttons"
+                android:layout_margin="10dp">
+
+                <RadioButton
+                    android:fontFamily="@font/nanumsbold_e"
+                    android:id="@+id/rdb_price_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2만원 이하"
+                    android:layout_columnWeight="1" />
+
+                <RadioButton
+                    android:fontFamily="@font/nanumsbold_e"
+                    android:id="@+id/rdb_price_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2만원 초과 5만원 이하"
+                    android:layout_columnWeight="1"/>
+
+                <RadioButton
+                    android:fontFamily="@font/nanumsbold_e"
+                    android:id="@+id/rdb_price_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5만원 초과 7만원 이하"
+                    android:layout_columnWeight="1"/>
+
+                <RadioButton
+                    android:fontFamily="@font/nanumsbold_e"
+                    android:id="@+id/rdb_price_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="7만원 초과"
+                    android:layout_columnWeight="1"/>
+
+            </GridLayout>
+
+        </RelativeLayout>
+
+        <!--데이터량 Seekbar 설정 레이아웃-->
+        <RelativeLayout
+            android:id="@+id/relative4_4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/relative4_3"
+            android:layout_marginTop="20dp"
+            android:visibility="gone">
+
+            <TextView
+                android:fontFamily="@font/nanumsbold_e"
+                android:id="@+id/tv_data_usage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="사용 중인 요금제의 대략적인 데이터량"
+                android:textSize="15dp"
+                android:layout_gravity="center"
+                android:layout_centerHorizontal="true" />
+
+            <SeekBar
+                android:layout_below="@+id/tv_data_usage"
+                android:id="@+id/seekBar_data_usage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="5"
+                android:padding="10dp"
+                android:layout_marginTop="10dp"
+                android:thumbOffset="10dp" />
+
+            <TextView
+                android:fontFamily="@font/nanumsbold_e"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/seekBar_data_usage"
+                android:id="@+id/tv_data_usage_0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 GB"
+                android:visibility="gone" />
+
+            <TextView
+                android:fontFamily="@font/nanumsbold_e"
+                android:layout_below="@+id/seekBar_data_usage"
+                android:id="@+id/tv_data_usage_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="7 GB"
+                android:layout_centerHorizontal="true"
+                android:visibility="gone" />
+
+            <TextView
+                android:fontFamily="@font/nanumsbold_e"
+                android:layout_below="@+id/seekBar_data_usage"
+                android:id="@+id/tv_data_usage_15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15 GB"
+                android:layout_centerHorizontal="true"
+                android:visibility="gone" />
+
+            <TextView
+                android:fontFamily="@font/nanumsbold_e"
+                android:layout_below="@+id/seekBar_data_usage"
+                android:id="@+id/tv_data_usage_71"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="71 GB"
+                android:layout_centerHorizontal="true"
+                android:visibility="gone" />
+
+            <TextView
+                android:fontFamily="@font/nanumsbold_e"
+                android:layout_below="@+id/seekBar_data_usage"
+                android:id="@+id/tv_data_usage_100"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="100 GB"
+                android:layout_centerHorizontal="true"
+                android:visibility="gone" />
+
+            <TextView
+                android:fontFamily="@font/nanumsbold_e"
+                android:layout_below="@+id/seekBar_data_usage"
+                android:id="@+id/tv_data_usage_unlimited"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="대략 무제한"
+                android:layout_centerHorizontal="true"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <!--속도 제한 데이터 설정 레이아웃-->
+        <RelativeLayout
+            android:id="@+id/relative4_5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/linear4_1"
+            android:visibility="gone">
+
+            <TextView
+                android:fontFamily="@font/nanumsbold_e"
+                android:layout_marginBottom="10dp"
+                android:gravity="center"
+                android:id="@+id/tv_extra_speed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="속도 제한 데이터 (무제한)"
+                android:textSize="18dp"
+                android:layout_centerHorizontal="true" />
+
+            <GridLayout
+                android:paddingRight="30dp"
+                android:paddingLeft="60dp"
+                android:id="@+id/grid_layout_extra_speed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:rowCount="2"
+                android:columnCount="2"
+                android:layout_below="@+id/tv_extra_speed" >
+
+                <RadioButton
+                    android:fontFamily="@font/nanumsbold_e"
+                    android:id="@+id/rdb_limit_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1Mbps"
+                    android:layout_columnWeight="1"/>
+
+                <RadioButton
+                    android:fontFamily="@font/nanumsbold_e"
+                    android:id="@+id/rdb_limit_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3Mbps"
+                    android:layout_columnWeight="1"/>
+
+                <RadioButton
+                    android:fontFamily="@font/nanumsbold_e"
+                    android:id="@+id/rdb_limit_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5Mbps"
+                    android:layout_columnWeight="1"/>
+
+                <RadioButton
+                    android:fontFamily="@font/nanumsbold_e"
+                    android:id="@+id/rdb_limit_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10Mbps"
+                    android:layout_columnWeight="1" />
+
+            </GridLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <!--요금제 필터링 버튼 레이아웃-->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scroll4"
+        android:layout_below="@id/view_top4"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@android:color/transparent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/linear4_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:padding="0dp"
+                android:scaleType="fitCenter"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:id="@+id/btn_telecom"
+                android:src="@drawable/telecom1"
+                android:onClick="toggleVisibility"/>
+
+            <ImageButton
+                android:id="@+id/btn_price"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:padding="0dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/price1" />
+
+            <ImageButton
+                android:id="@+id/btn_data"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="5dp"
+                android:padding="0dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/data1" />
+
+            <ImageButton
+                android:padding="0dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/speed1"
+                android:layout_marginLeft="5dp"
+                android:layout_width="125dp"
+                android:layout_height="40dp"
+                android:id="@+id/btn_speed" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <TextView
+        android:fontFamily="@font/nanumsbold_e"
+        android:layout_marginTop="10dp"
+        android:id="@+id/tv_4"
+        android:layout_below="@+id/scroll4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="나의 요금제를 골라주세요!"
+        android:textAlignment="center"/>
+
+    <RelativeLayout
+        android:background="#ffffff"
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_4">
+
+        <ListView
+            android:id="@+id/lv_filtering_sub"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
