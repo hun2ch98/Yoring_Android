@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--custom font-family 적용-->
+        <item name="android:textViewStyle">@style/customTextViewFontStyle</item>
+        <item name="android:buttonStyle">@style/customButtonFontStyle</item>
+        <item name="android:editTextStyle">@style/customEditTextFontStyle</item>
+        <item name="android:radioButtonStyle">@style/customRadioButtonFontStyle</item>
+        <item name="android:checkboxStyle">@style/customCheckboxFontStyle</item>
+        <item name="toolbarStyle">@style/CustomToolBar</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+    <style name="BottomNavigationViewLabel">
+        <item name="android:textSize">12sp</item> <!-- 원하는 텍스트 크기로 조절 -->
+    </style>
+</resources>
