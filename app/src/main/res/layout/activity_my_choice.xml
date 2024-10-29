@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#6495ED"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:layout_alignParentTop="true" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:id="@+id/relative_my_sub">
+
+        <!--요금제 명-->
+        <TextView
+            android:id="@+id/tv_my_sub_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10dp" />
+
+        <!--통신사는 이미지뷰-->
+        <ImageView
+            android:id="@+id/imb_my_sub_logo"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:padding="0dp" />
+
+        <!--데이터량-->
+        <TextView
+            android:id="@+id/tv_my_sub_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10dp" />
+
+        <!--통신망-->
+        <TextView
+            android:id="@+id/tv_my_sub_network"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10dp" />
+
+        <!--가격-->
+        <TextView
+            android:id="@+id/tv_my_sub_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10dp" />
+
+        <!--속도 제한-->
+        <TextView
+            android:id="@+id/tv_my_sub_limit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10dp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:layout_below="@+id/relative_my_sub"
+        android:orientation="horizontal"
+        android:background="#D4F1FF">
+
+        <ListView
+            android:id="@+id/choice1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corners_background" />
+
+        <ListView
+            android:id="@+id/choice2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corners_background"/>
+
+        <ListView
+            android:id="@+id/choice3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/rounded_corners_background"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="660dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/detail1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="자세히" />
+
+        <Button
+            android:id="@+id/detail2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="자세히" />
+
+        <Button
+            android:id="@+id/detail3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="자세히" />
+    </LinearLayout>
+
+</RelativeLayout>
