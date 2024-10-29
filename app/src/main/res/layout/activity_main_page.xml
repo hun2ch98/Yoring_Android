@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#f5f5f5"
+    tools:context=".MainPage">
+
+    <ImageView
+        android:padding="0dp"
+        android:id="@+id/imb_top"
+        android:layout_width="wrap_content"
+        android:layout_height="90dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/top1" />
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/linear_sub_plan">
+
+        <TextView
+            android:layout_marginTop="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="요금제 입력하려면 선택"
+            android:fontFamily="@font/nanumsbold_e"
+            android:id="@+id/tv_sub_yet"/>
+
+        <TextView
+            android:layout_marginTop="15dp"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_current_sub"
+            android:fontFamily="@font/nanumsbold_e"
+            android:text="현재 사용 중인 요금제"
+            android:textSize="15dp" />
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_current_sub_name"
+            android:fontFamily="@font/nanumsbold_e"
+            android:visibility="gone"
+            android:textSize="22dp"/>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imb_top" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager"
+                android:layout_width="350dp"
+                android:layout_height="200dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"/>
+
+            <ImageView
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitCenter"
+                android:background="@android:color/transparent"
+                android:layout_marginTop="20dp"
+                android:layout_width="350dp"
+                android:layout_height="200dp"
+                android:src="@drawable/ad1"
+                android:id="@+id/img_ad"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:text="멤버십 바로가기"
+                android:layout_below="@+id/viewPager"
+                android:id="@+id/tv_membership"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="50dp"
+                android:fontFamily="@font/nanumsbold_e" />
+
+            <LinearLayout
+                android:layout_marginTop="15dp"
+                android:id="@+id/linear_membership"
+                android:layout_below="@+id/tv_membership"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <ImageButton
+                    android:layout_marginLeft="30dp"
+                    android:src="@drawable/skt_membership"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:scaleType="fitCenter"
+                    android:padding="0dp"
+                    android:background="@android:color/transparent"
+                    android:layout_weight="1"
+                    android:id="@+id/imb_skt_membership" />
+
+                <ImageButton
+                    android:src="@drawable/kt_membership"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:scaleType="fitCenter"
+                    android:padding="0dp"
+                    android:background="@android:color/transparent"
+                    android:layout_weight="1"
+                    android:id="@+id/imb_kt_membership" />
+
+                <ImageButton
+                    android:layout_marginRight="30dp"
+                    android:src="@drawable/lg_membership"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:scaleType="fitCenter"
+                    android:padding="0dp"
+                    android:background="@android:color/transparent"
+                    android:layout_weight="1"
+                    android:id="@+id/imb_lg_membership" />
+
+            </LinearLayout>
+
+            <TableLayout
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/table1"
+                android:layout_below="@+id/linear_membership">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/btn_recommend"
+                        android:layout_width="200dp"
+                        android:layout_height="150dp"
+                        android:layout_marginBottom="30dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:padding="0dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/simple_recommend" />
+
+                    <ImageButton
+                        android:id="@+id/btn_detail_recommend"
+                        android:layout_width="200dp"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:padding="0dp"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/detail_recommend" />
+
+                </TableRow>
+
+                <TableRow>
+
+                    <ImageButton
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:padding="0dp"
+                        android:layout_marginBottom="30dp"
+                        android:layout_width="0dp"
+                        android:layout_height="150dp"
+                        android:layout_weight="1"
+                        android:id="@+id/imb_news1"
+                        android:src="@drawable/news1" />
+
+                    <ImageButton
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:padding="0dp"
+                        android:layout_width="0dp"
+                        android:layout_height="150dp"
+                        android:layout_weight="1"
+                        android:id="@+id/imb_news2"
+                        android:src="@drawable/news2" />
+
+                    <ImageButton
+                        android:background="@android:color/transparent"
+                        android:scaleType="fitCenter"
+                        android:padding="0dp"
+                        android:layout_width="0dp"
+                        android:layout_height="150dp"
+                        android:layout_weight="1"
+                        android:id="@+id/imb_news3"
+                        android:src="@drawable/news3" />
+
+                </TableRow>
+
+            </TableLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <!-- 하단 탭 메뉴 -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        app:itemIconTint="@drawable/selector_bottom_navigation_item"
+        app:itemTextColor="@android:color/black"
+        app:menu="@menu/bottom_navigation_menu" />
+
+</RelativeLayout>
