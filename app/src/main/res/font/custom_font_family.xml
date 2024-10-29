@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--nixgone-->
+    <font
+        android:font="@font/nixgonelite"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/nixgonelite"
+        app:fontStyle="normal"
+        app:fontWeight="400" />
+    <font
+        android:font="@font/nixgoneregular"
+        android:fontStyle="normal"
+        android:fontWeight="500"
+        app:font="@font/nixgoneregular"
+        app:fontStyle="normal"
+        app:fontWeight="500" />
+    <font
+        android:font="@font/nixgonebold"
+        android:fontStyle="normal"
+        android:fontWeight="700"
+        app:font="@font/nixgonebold"
+        app:fontStyle="normal"
+        app:fontWeight="1000" />
+
+
+    <!--nanums-->
+    <font
+        android:font="@font/nanumslite"
+        android:fontStyle="normal"
+        android:fontWeight="400"
+        app:font="@font/nanumslite"
+        app:fontStyle="normal"
+        app:fontWeight="400" />
+    <font
+        android:font="@font/nanumsregular"
+        android:fontStyle="normal"
+        android:fontWeight="500"
+        app:font="@font/nanumsregular"
+        app:fontStyle="normal"
+        app:fontWeight="500" />
+    <font
+        android:font="@font/nanumsbold"
+        android:fontStyle="normal"
+        android:fontWeight="700"
+        app:font="@font/nanumsbold"
+        app:fontStyle="normal"
+        app:fontWeight="1000" />
+    <font
+        android:font="@font/nanumsbold_e"
+        android:fontStyle="normal"
+        android:fontWeight="700"
+        app:font="@font/nanumsbold_e"
+        app:fontStyle="normal"
+        app:fontWeight="1000" />
+</font-family>
