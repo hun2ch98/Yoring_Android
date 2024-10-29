@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F8F8"
+    tools:context=".MenuScript">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_a"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#FFFFFFFF">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/nanumsbold_e"
+            android:text="전체 메뉴"
+            android:textSize="20dp">
+
+        </TextView>
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_below="@id/toolbar_a"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:id="@+id/recommand">
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="30dp"
+    android:text="전체조회"
+    android:layout_marginLeft="50dp">
+
+</TextView>
+
+        <Button
+            android:id="@+id/btn_simple_recommand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:background="#00FFFFFF"
+            android:text="요금제 간단한 추천"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="50dp"
+            android:fontFamily="@font/nanumsregular"/>
+
+        <Button
+            android:id="@+id/btn_detail_recommand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:background="#00FFFFFF"
+            android:text="요금제 자세한 추천"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="50dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/nanumsregular"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/recommand"
+        android:id="@+id/membership"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="멤버십"
+            android:layout_marginLeft="50dp">
+        </TextView>
+
+        <Button
+            android:id="@+id/btn_skt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:background="#00FFFFFF"
+            android:text="SKT"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="50dp"
+            android:fontFamily="@font/nanumsregular"/>
+
+        <Button
+            android:id="@+id/btn_lg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:background="#00FFFFFF"
+            android:text="LG"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="50dp"
+            android:fontFamily="@font/nanumsregular"/>
+
+        <Button
+            android:id="@+id/btn_kt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:background="#00FFFFFF"
+            android:text="KT"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="50dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/nanumsregular"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/membership"
+        android:id="@+id/all_search"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white">
+<Button
+    android:layout_width="match_parent"
+    android:id="@+id/btn_all_search"
+    android:layout_height="wrap_content"
+    android:textStyle="bold"
+    android:background="#00FFFFFF"
+    android:text="요금제 전체 조회"
+    android:gravity="center_vertical"
+    android:layout_marginLeft="50dp"
+    android:fontFamily="@font/nanumsregular">
+</Button>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/all_search"
+        android:id="@+id/my_choice_list"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:id="@+id/btn_my_choice_list"
+            android:background="#00FFFFFF"
+            android:text="현재 사용 중인 요금제 설정"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="50dp"
+            android:fontFamily="@font/nanumsregular">
+        </Button>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@+id/my_choice_list"
+        android:id="@+id/btn_my_page"
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:background="#00FFFFFF"
+            android:text="마이페이지"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="50dp"
+            android:fontFamily="@font/nanumsregular">
+        </Button>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/service_center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/my_choice_list"
+        android:layout_marginTop="4dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_service_center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:background="#00FFFFFF"
+            android:fontFamily="@font/nanumsregular"
+            android:gravity="center_vertical"
+            android:text="고객센터"
+            android:textStyle="bold">
+        </Button>
+    </LinearLayout>
+
+
+</RelativeLayout>
