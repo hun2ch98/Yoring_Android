@@ -1,0 +1,461 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailRecommend2"
+    android:background="#f5f5f5">
+
+    <ImageButton
+        android:id="@+id/imb_first"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:background="#ffffff"
+        android:layout_marginBottom="15dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="220dp">
+
+        <TextView
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/tv_current_use"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="현재 이용 중인 요금제"
+            android:textSize="25dp"
+            android:layout_marginBottom="15dp"
+            android:fontFamily="@font/nanumsbold_e" />
+
+        <TextView
+            android:layout_below="@+id/tv_current_use"
+            android:id="@+id/tv_current_sub_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="요금제 이름"
+            android:textSize="20dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginLeft="25dp"
+            android:fontFamily="@font/nanumsbold_e" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/tv_current_sub_name">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/imv_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/imv_price" />
+
+                <TextView
+                    android:id="@+id/tv_price_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="가격"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/nanumsbold_e"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="17dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/imv_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/imv_data" />
+
+                <TextView
+                    android:id="@+id/tv_data_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="데이터량"
+                    android:textSize="15dp"
+                    android:fontFamily="@font/nanumsbold_e"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="17dp"/>
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_marginRight="10dp"
+                android:id="@+id/imv_telecom"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_weight="1"
+                android:src="@drawable/freet_logo" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/imb_second"
+        android:layout_below="@+id/imb_first"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:layout_below="@id/imb_first" >
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:id="@+id/tv_recommended"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:text="추천된 요금제"
+            android:fontFamily="@font/nanumsbold_e"
+            android:layout_centerHorizontal="true"/>
+
+        <RelativeLayout
+            android:id="@+id/relative_cheap1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_recommended"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="30dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/linear_cheap1"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    android:id="@+id/tv_cheap1"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="저렴한 요금제 1"
+                    android:textSize="17dp"
+                    android:fontFamily="@font/nanumsbold_e" />
+
+                <ImageView
+                    android:id="@+id/imv_cheap1"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:src="@drawable/freet_logo" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/linear_cheap1">
+
+                <TextView
+                    android:id="@+id/tv_current_use_price1"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="15dp"
+                    android:text="현재 가격"
+                    android:fontFamily="@font/nanumsbold_e"
+                    android:textColor="#c0c0c0"/>
+
+                <TextView
+                    android:id="@+id/tv_cheap_price1"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:text="추천된 요금제 가격"
+                    android:fontFamily="@font/nanumsbold_e"
+                    android:textColor="#6495ed"/>
+
+                <TextView
+                    android:id="@+id/tv_cheap_data1"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:text="데이터량"
+                    android:fontFamily="@font/nanumsbold_e" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relative_cheap2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_cheap1"
+            android:layout_marginBottom="30dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/linear_cheap2"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    android:id="@+id/tv_cheap2"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="저렴한 요금제 2"
+                    android:textSize="17dp"
+                    android:fontFamily="@font/nanumsbold_e" />
+
+                <ImageView
+                    android:id="@+id/imv_cheap2"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:src="@drawable/freet_logo" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/linear_cheap2">
+
+                <TextView
+                    android:id="@+id/tv_current_use_price2"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="현재 가격"
+                    android:fontFamily="@font/nanumsbold_e"
+                    android:textColor="#c0c0c0"/>
+
+                <TextView
+                    android:id="@+id/tv_cheap_price2"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:text="추천된 요금제 가격"
+                    android:fontFamily="@font/nanumsbold_e"
+                    android:textColor="#6495ed"/>
+
+                <TextView
+                    android:id="@+id/tv_cheap_data2"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:text="데이터량"
+                    android:fontFamily="@font/nanumsbold_e" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relative_recommended1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_cheap2"
+            android:layout_marginBottom="30dp"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/linear_recommended1"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    android:id="@+id/tv_recommended1"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="서비스가 포함된 요금제"
+                    android:textSize="17dp"
+                    android:fontFamily="@font/nanumsbold_e" />
+
+                <ImageView
+                    android:id="@+id/imv_recommended1"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:src="@drawable/freet_logo" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_recommended1_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:layout_below="@id/linear_recommended1">
+
+                <TextView
+                    android:id="@+id/tv_current_use_price3"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="현재 가격"
+                    android:fontFamily="@font/nanumsbold_e"
+                    android:textColor="#c0c0c0"/>
+
+                <TextView
+                    android:id="@+id/tv_recommended_price1"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:text="추천된 요금제 가격"
+                    android:fontFamily="@font/nanumsbold_e"
+                    android:textColor="#6495ed"/>
+
+                <TextView
+                    android:id="@+id/tv_recommended_data1"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:text="데이터량"
+                    android:fontFamily="@font/nanumsbold_e" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linear_recommended1_1"
+                android:layout_marginLeft="50dp"
+                android:text="서비스 사항" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relative_recommended2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relative_recommended1" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/linear_recommended2"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    android:id="@+id/tv_recommended2"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="서비스가 포함된 요금제"
+                    android:textSize="17dp"
+                    android:fontFamily="@font/nanumsbold_e" />
+
+                <ImageView
+                    android:id="@+id/imv_recommended2"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="40dp"
+                    android:src="@drawable/freet_logo" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear_recommended2_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:layout_below="@id/linear_recommended2">
+
+                <TextView
+                    android:id="@+id/tv_current_use_price4"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="현재 가격"
+                    android:fontFamily="@font/nanumsbold_e"
+                    android:textColor="#c0c0c0"/>
+
+                <TextView
+                    android:id="@+id/tv_recommended_price2"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:text="추천된 요금제 가격"
+                    android:fontFamily="@font/nanumsbold_e"
+                    android:textColor="#6495ed"/>
+
+                <TextView
+                    android:id="@+id/tv_recommended_data2"
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:text="데이터량"
+                    android:fontFamily="@font/nanumsbold_e" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/linear_recommended2_1"
+                android:layout_marginLeft="50dp"
+                android:text="서비스 사항" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
