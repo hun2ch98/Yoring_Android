@@ -1,0 +1,65 @@
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+    id 'org.jetbrains.kotlin.android'
+}
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+android {
+    namespace 'com.example.yoringmain'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "com.example.yoringmain"
+        minSdk 30
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "KAKAO_NATIVE_APP_KEY", properties['kakao_native_app_key']
+        resValue "string", "kakao_oauth_host", properties['kakao_oauth_host']
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+
+    implementation 'com.github.bumptech.glide:glide:4.10.0'
+    annotationProcessor('com.github.bumptech.glide:compiler:4.10.0')
+    implementation("com.kakao.sdk:v2-all:2.19.0") // 전체 모듈 설치, 2.11.0 버전부터 지원
+    implementation("com.kakao.sdk:v2-user:2.19.0") // 카카오 로그인 API 모듈
+    implementation("com.kakao.sdk:v2-talk:2.19.0") // 카카오톡 채널, 카카오톡 소셜, 카카오톡 메시지 API 모듈
+    implementation("com.kakao.sdk:v2-share:2.19.0") // 카카오톡 공유 API 모듈
+    implementation("com.kakao.sdk:v2-friend:2.19.0") // 피커 API 모듈
+    implementation("com.kakao.sdk:v2-navi:2.19.0") // 카카오내비 API 모듈
+    implementation("com.kakao.sdk:v2-cert:2.19.0") // 카카오톡 인증 서비스 API 모듈
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation(platform("com.google.firebase:firebase-bom:32.7.1"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.android.gms:play-services-auth:20.7.0")
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'com.google.firebase:firebase-database:20.3.0'
+    implementation 'com.google.firebase:firebase-auth:22.3.1'
+    implementation 'androidx.core:core-ktx:+'
+    implementation 'androidx.activity:activity:1.8.0'
+    implementation "androidx.viewpager2:viewpager2:1.1.0" // ViewPager2
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
