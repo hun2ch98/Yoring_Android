@@ -26,23 +26,18 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class DetailRecommend1 extends AppCompatActivity {
     Toolbar toolbar;
     Button btnHandOperated, btnAutomatic, btnFind;
     TextView tvPrintData;
     SeekBar seekBarDataUsage;
-    private Spinner spinnerFamily1, spinnerFamily2, spinnerFamily3;
-    ImageButton imbNetflix, imbTving, imbWavve, imbDisneyPlus,
-            imbNotUseTv, imbTvSkt, imbTvKt, imbTvLg,
-            imbNotUseInternet, imbInternetSkt, imbInternetKt, imbInternetLg;
-    private boolean isNetflixPicked = false, isTvingPicked = false, isWavvePicked = false, isDisneyPlusPicked = false;
-    LinearLayout linearTv2, linearInternet2;
+    private Spinner spinnerFamily1, spinnerFamily2, spinnerFamily3, spinnerFamily4;
+    ImageButton imbNetflix, imbTving, imbWavve, imbDisneyPlus, imbYoutube;
+    private boolean isNetflixPicked = false, isTvingPicked = false, isWavvePicked = false, isDisneyPlusPicked = false, isYoutubePicked = false;
     private static final float TEXT_SIZE_SELECTED = 12f;
     private static final float TEXT_SIZE_DEFAULT = 10f;
-    private int selectedTvButtonId = 0;
-    private int selectedInternetButtonId = 0;
     List<String> telecomCompanies = new ArrayList<>();
+    private int selectedCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,19 +59,7 @@ public class DetailRecommend1 extends AppCompatActivity {
         imbDisneyPlus = findViewById(R.id.imb_disney_plus);
         imbTving = findViewById(R.id.imb_tving);
         imbWavve = findViewById(R.id.imb_wavve);
-
-        imbNotUseTv= findViewById(R.id.imb_not_use_tv);
-        imbTvSkt = findViewById(R.id.imb_tv_skt);
-        imbTvKt = findViewById(R.id.imb_tv_kt);
-        imbTvLg = findViewById(R.id.imb_tv_lg);
-
-        imbNotUseInternet = findViewById(R.id.imb_not_use_internet);
-        imbInternetSkt = findViewById(R.id.imb_internet_skt);
-        imbInternetKt = findViewById(R.id.imb_internet_kt);
-        imbInternetLg = findViewById(R.id.imb_internet_lg);
-
-        linearTv2 = findViewById(R.id.linear_tv2);
-        linearInternet2 = findViewById(R.id.linear_internet2);
+        imbYoutube = findViewById(R.id.imb_youtube);
 
         seekBarDataUsage.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -128,147 +111,84 @@ public class DetailRecommend1 extends AppCompatActivity {
         imbNetflix.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                isNetflixPicked = !isNetflixPicked;
-                toggleNetflixImage();
+                toggleServiceSelection("Netflix");
             }
         });
 
         imbTving.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                isTvingPicked = !isTvingPicked;
-                toggleTvingImage();
+                toggleServiceSelection("Tving");
             }
         });
 
         imbWavve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                isWavvePicked = !isWavvePicked;
-                toggleWavveImage();
+                toggleServiceSelection("Wavve");
             }
         });
 
         imbDisneyPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                isDisneyPlusPicked = !isDisneyPlusPicked;
-                toggleDisneyPlusImage();
+                toggleServiceSelection("DisneyPlus");
             }
         });
 
-        imbNotUseTv.setOnClickListener(new View.OnClickListener() {
+        imbYoutube.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toggleTvButtons();
+                toggleServiceSelection("Youtube");
             }
         });
 
-        imbNotUseInternet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toggleInternetButtons();
-            }
-        });
-
-        imbTvSkt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleTvButtonClick(imbTvSkt, R.drawable.skt_pick, R.drawable.skt_not_pick);
-            }
-        });
-
-        imbTvKt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleTvButtonClick(imbTvKt, R.drawable.kt_pick, R.drawable.kt_not_pick);
-            }
-        });
-
-        imbTvLg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleTvButtonClick(imbTvLg, R.drawable.uplus_pick, R.drawable.uplus_not_pick);
-            }
-        });
-
-        imbInternetSkt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleInternetButtonClick(imbInternetSkt, R.drawable.skt_pick, R.drawable.skt_not_pick);
-            }
-        });
-
-        imbInternetKt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleInternetButtonClick(imbInternetKt, R.drawable.kt_pick, R.drawable.kt_not_pick);
-            }
-        });
-
-        imbInternetLg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleInternetButtonClick(imbInternetLg, R.drawable.uplus_pick, R.drawable.uplus_not_pick);
-            }
-        });
         initSpinners();
-    }
-
-    private void toggleTvButtons() {
-        boolean isEnabled = imbTvSkt.isEnabled();
-        imbTvSkt.setEnabled(!isEnabled);
-        imbTvKt.setEnabled(!isEnabled);
-        imbTvLg.setEnabled(!isEnabled);
-
-        float alphaValue = isEnabled ? 0.4f : 1.0f;
-        linearTv2.setAlpha(alphaValue);
-    }
-
-    private void toggleInternetButtons() {
-        boolean isEnabled = imbInternetSkt.isEnabled();
-        imbInternetSkt.setEnabled(!isEnabled);
-        imbInternetKt.setEnabled(!isEnabled);
-        imbInternetLg.setEnabled(!isEnabled);
-
-        float alphaValue = isEnabled ? 0.4f : 1.0f;
-        linearInternet2.setAlpha(alphaValue);
     }
 
     private void toggleNetflixImage() {
         if (isNetflixPicked) {
-            imbNetflix.setImageResource(R.drawable.netflix_not_pick);
-        } else {
             imbNetflix.setImageResource(R.drawable.netflix_pick);
+        } else {
+            imbNetflix.setImageResource(R.drawable.netflix_not_pick);
         }
         imbNetflix.invalidate();
     }
 
     private void toggleTvingImage() {
         if (isTvingPicked) {
-            imbTving.setImageResource(R.drawable.tving_not_pick);
-        } else {
             imbTving.setImageResource(R.drawable.tving_pick);
+        } else {
+            imbTving.setImageResource(R.drawable.tving_not_pick);
         }
         imbTving.invalidate();
     }
 
     private void toggleWavveImage() {
         if (isWavvePicked) {
-            imbWavve.setImageResource(R.drawable.wavve_not_pick);
-        } else {
             imbWavve.setImageResource(R.drawable.wavve_pick);
+        } else {
+            imbWavve.setImageResource(R.drawable.wavve_not_pick);
         }
         imbWavve.invalidate();
     }
 
     private void toggleDisneyPlusImage() {
         if (isDisneyPlusPicked) {
-            imbDisneyPlus.setImageResource(R.drawable.disney_not_pick);
-        } else {
             imbDisneyPlus.setImageResource(R.drawable.disney_pick);
+        } else {
+            imbDisneyPlus.setImageResource(R.drawable.disney_not_pick);
         }
         imbDisneyPlus.invalidate(); // UI 갱신 강제
+    }
+
+    private void toggleYoutubeImage() {
+        if (isYoutubePicked) {
+            imbYoutube.setImageResource(R.drawable.youtube_pick);
+        } else {
+            imbYoutube.setImageResource(R.drawable.youtube_not_pick);
+        }
+        imbYoutube.invalidate(); // UI 갱신 강제
     }
 
 
@@ -308,58 +228,11 @@ public class DetailRecommend1 extends AppCompatActivity {
         }
     }
 
-    private void handleTvButtonClick(ImageButton button, int pickedResId, int notPickedResId) {
-        if (selectedTvButtonId == button.getId()) {
-            button.setImageResource(notPickedResId);
-            selectedTvButtonId = 0;
-        } else {
-            if (selectedTvButtonId != 0) {
-                ImageButton previousButton = findViewById(selectedTvButtonId);
-                if (previousButton != null) {
-                    int previousNotPickedResId = getNotPickedTv(previousButton.getId());
-                    previousButton.setImageResource(previousNotPickedResId);
-                }
-            }
-            button.setImageResource(pickedResId);
-            selectedTvButtonId = button.getId();
-        }
-    }
-
-    private int getNotPickedTv(int buttonId) {
-        if (buttonId == R.id.imb_tv_skt) return R.drawable.skt_not_pick;
-        if (buttonId == R.id.imb_tv_kt) return R.drawable.kt_not_pick;
-        if (buttonId == R.id.imb_tv_lg) return R.drawable.uplus_not_pick;
-        return 0;
-    }
-
-    private void handleInternetButtonClick(ImageButton button, int pickedResId, int notPickedResId) {
-        if (selectedInternetButtonId == button.getId()) {
-            button.setImageResource(notPickedResId);
-            selectedInternetButtonId = 0;
-        } else {
-            if (selectedTvButtonId != 0) {
-                ImageButton previousButton = findViewById(selectedTvButtonId);
-                if (previousButton != null) {
-                    int previousNotPickedResId = getNotPickedInternet(previousButton.getId());
-                    previousButton.setImageResource(previousNotPickedResId);
-                }
-            }
-            button.setImageResource(pickedResId);
-            selectedInternetButtonId = button.getId();
-        }
-    }
-
-    private int getNotPickedInternet(int buttonId) {
-        if (buttonId == R.id.imb_internet_skt) return R.drawable.skt_not_pick;
-        if (buttonId == R.id.imb_internet_kt) return R.drawable.kt_not_pick;
-        if (buttonId == R.id.imb_internet_lg) return R.drawable.uplus_not_pick;
-        return 0;
-    }
-
     private void initSpinners() {
         spinnerFamily1 = findViewById(R.id.spinner_family1);
         spinnerFamily2 = findViewById(R.id.spinner_family2);
         spinnerFamily3 = findViewById(R.id.spinner_family3);
+        spinnerFamily4 = findViewById(R.id.spinner_family4);
 
         List<String> telecomCompanies = new ArrayList<>();
         telecomCompanies.add("선택");
@@ -372,14 +245,18 @@ public class DetailRecommend1 extends AppCompatActivity {
         spinnerFamily1.setAdapter(adapter);
         spinnerFamily2.setAdapter(adapter);
         spinnerFamily3.setAdapter(adapter);
+        spinnerFamily4.setAdapter(adapter);
 
         spinnerFamily1.setSelection(0);
         spinnerFamily2.setSelection(0);
         spinnerFamily3.setSelection(0);
+        spinnerFamily4.setSelection(0);
+
 
         setupSpinnerListener(spinnerFamily1);
         setupSpinnerListener(spinnerFamily2);
         setupSpinnerListener(spinnerFamily3);
+        setupSpinnerListener(spinnerFamily4);
     }
 
     private void setupSpinnerListener(Spinner spinner) {
@@ -395,5 +272,71 @@ public class DetailRecommend1 extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
+    }
+
+    private void toggleServiceSelection(String service) {
+        boolean isSelected = false;
+
+        switch (service) {
+            case "Netflix":
+                isNetflixPicked = !isNetflixPicked;
+                toggleNetflixImage();
+                isSelected = isNetflixPicked;
+                break;
+            case "Tving":
+                isTvingPicked = !isTvingPicked;
+                toggleTvingImage();
+                isSelected = isTvingPicked;
+                break;
+            case "Wavve":
+                isWavvePicked = !isWavvePicked;
+                toggleWavveImage();
+                isSelected = isWavvePicked;
+                break;
+            case "DisneyPlus":
+                isDisneyPlusPicked = !isDisneyPlusPicked;
+                toggleDisneyPlusImage();
+                isSelected = isDisneyPlusPicked;
+                break;
+            case "Youtube":
+                isYoutubePicked = !isYoutubePicked;
+                toggleYoutubeImage();
+                isSelected = isYoutubePicked;
+                break;
+        }
+
+        // 선택된 상태에 따라 selectedCount 조정
+        if (isSelected) {
+            selectedCount++;
+            if (selectedCount > 2) {
+                // 최대 2개 선택만 가능하므로 마지막 선택 해제
+                Toast.makeText(this, "최대 2개까지만 선택 가능합니다.", Toast.LENGTH_SHORT).show();
+                switch (service) {
+                    case "Netflix":
+                        isNetflixPicked = !isNetflixPicked;
+                        toggleNetflixImage();
+                        break;
+                    case "Tving":
+                        isTvingPicked = !isTvingPicked;
+                        toggleTvingImage();
+                        break;
+                    case "Wavve":
+                        isWavvePicked = !isWavvePicked;
+                        toggleWavveImage();
+                        break;
+                    case "DisneyPlus":
+                        isDisneyPlusPicked = !isDisneyPlusPicked;
+                        toggleDisneyPlusImage();
+                        break;
+                    case "Youtube":
+                        isYoutubePicked = !isYoutubePicked;
+                        toggleYoutubeImage();
+                        break;
+                }
+                selectedCount--;
+            }
+        } else {
+            selectedCount--;
+        }
     }
 }
