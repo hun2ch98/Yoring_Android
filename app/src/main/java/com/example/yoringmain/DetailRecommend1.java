@@ -23,7 +23,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class DetailRecommend1 extends AppCompatActivity {
@@ -32,12 +39,14 @@ public class DetailRecommend1 extends AppCompatActivity {
     TextView tvPrintData;
     SeekBar seekBarDataUsage;
     private Spinner spinnerFamily1, spinnerFamily2, spinnerFamily3, spinnerFamily4;
+    private int sktCount = 0, ktCount = 0, lgCount = 0;
     ImageButton imbNetflix, imbTving, imbWavve, imbDisneyPlus, imbYoutube;
     private boolean isNetflixPicked = false, isTvingPicked = false, isWavvePicked = false, isDisneyPlusPicked = false, isYoutubePicked = false;
     private static final float TEXT_SIZE_SELECTED = 12f;
     private static final float TEXT_SIZE_DEFAULT = 10f;
     List<String> telecomCompanies = new ArrayList<>();
     private int selectedCount = 0;
+    private DatabaseReference dbRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +69,8 @@ public class DetailRecommend1 extends AppCompatActivity {
         imbTving = findViewById(R.id.imb_tving);
         imbWavve = findViewById(R.id.imb_wavve);
         imbYoutube = findViewById(R.id.imb_youtube);
+
+        dbRef = FirebaseDatabase.getInstance().getReference("https://yoring2024-659ed-default-rtdb.firebaseio.com/");
 
         seekBarDataUsage.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -238,7 +249,7 @@ public class DetailRecommend1 extends AppCompatActivity {
         telecomCompanies.add("선택");
         telecomCompanies.add("SKT");
         telecomCompanies.add("KT");
-        telecomCompanies.add("LG U+");
+        telecomCompanies.add("LG");
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, telecomCompanies);
 
@@ -246,12 +257,6 @@ public class DetailRecommend1 extends AppCompatActivity {
         spinnerFamily2.setAdapter(adapter);
         spinnerFamily3.setAdapter(adapter);
         spinnerFamily4.setAdapter(adapter);
-
-        spinnerFamily1.setSelection(0);
-        spinnerFamily2.setSelection(0);
-        spinnerFamily3.setSelection(0);
-        spinnerFamily4.setSelection(0);
-
 
         setupSpinnerListener(spinnerFamily1);
         setupSpinnerListener(spinnerFamily2);
@@ -265,12 +270,12 @@ public class DetailRecommend1 extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position > 0) {
                     String selected = (String) parent.getItemAtPosition(position);
+                    updateTelecomCounts(selected);
                 }
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
+            public void onNothingSelected(AdapterView<?> parent) {}
         });
     }
 
@@ -338,5 +343,67 @@ public class DetailRecommend1 extends AppCompatActivity {
         } else {
             selectedCount--;
         }
+    }
+
+    private void updateTelecomCounts(String telecom) {
+        switch (telecom) {
+            case "SKT":
+                sktCount++;
+                break;
+            case "KT":
+                ktCount++;
+                break;
+            case "LG":
+                lgCount++;
+                break;
+        }
+    }
+
+    private void fetchAndFilterPlans() {
+        dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<HashMap<String, Object>> filteredPlans = new ArrayList<>();
+
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    HashMap<String, Object> plan = (HashMap<String, Object>) snapshot.getValue();
+
+                    // 요금제 가격 계산 로직
+                    float price = Float.parseFloat(plan.get("price").toString());
+                    if (sktCount > 0) {
+                        price *= 0.9; // SKT 요금제 10% 할인
+                    }
+                    if (ktCount > 0) {
+                        if (ktCount == 1) {
+                            price -= 2750; // KT 1명 할인
+                        } else if (ktCount >= 2) {
+                            price -= 5500; // KT 2명 이상 할인
+                        }
+                    }
+                    if (lgCount >= 3) {
+                        price -= 3600; // LG 3명 이상 할인
+                    }
+
+                    plan.put("price", price);
+                    filteredPlans.add(plan);
+                }
+
+                displayFilteredPlans(filteredPlans);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.e("Firebase", "Database error: " + databaseError.getMessage());
+            }
+        });
+    }
+
+    private void displayFilteredPlans(List<HashMap<String, Object>> filteredPlans) {
+        // 필터링된 요금제를 UI에 표시하는 로직 추가
+        StringBuilder displayText = new StringBuilder();
+        for (HashMap<String, Object> plan : filteredPlans) {
+            displayText.append(plan.get("name")).append(" - ").append(plan.get("price")).append("\n");
+        }
+        tvPrintData.setText(displayText.toString());
     }
 }
